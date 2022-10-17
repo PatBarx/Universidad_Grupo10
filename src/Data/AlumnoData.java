@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 /**
@@ -49,7 +49,7 @@ public class AlumnoData {
     }
     
     public List<Alumno> listarAlumnos(){    //SELECT * Alumnos
-        List<Alumno> alu= new List<Alumno>();
+        ArrayList<Alumno> alu= new ArrayList<Alumno>();
         return alu;
     }
     
