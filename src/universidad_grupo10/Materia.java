@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidad_grupo10;
-
 /**
- *
- * @author Usuario
+ * @author Grupo10
  */
 public class Materia {
     int idMateria;
@@ -65,7 +58,31 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", activo=" + activo + '}';
+        return "Materia: " + nombre + "\t Año: " + anio + "\t- Id_Materia: " + idMateria + "\t-Estado: " + activo + '.';
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 43 * hash + this.idMateria;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Materia other = (Materia) obj;
+        if (this.idMateria != other.idMateria) {
+            return false;
+        }
+        return true;
+    }        
 }
