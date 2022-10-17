@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  * @author Grupo10
@@ -48,8 +47,8 @@ public class AlumnoData {
         return alu;        
     }
     
-    public List<Alumno> listarAlumnos(){    //SELECT * Alumnos
-        ArrayList<Alumno> alu= new ArrayList<Alumno>();
+    public ArrayList<Alumno> listarAlumnos(){    //SELECT * Alumnos
+        ArrayList<Alumno> alu= new ArrayList();
         return alu;
     }
     
