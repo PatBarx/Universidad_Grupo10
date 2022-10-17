@@ -1,4 +1,4 @@
-package universidad_grupo10;
+package Entidades;
 /**
  * @author Grupo10
  */

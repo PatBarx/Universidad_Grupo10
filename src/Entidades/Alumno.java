@@ -1,16 +1,16 @@
-package universidad_grupo10;
+package Entidades;
 
 import java.time.LocalDate;
 /**
  * @author Grupo10
  */
 public class Alumno {
-    int idAlumno;
-    String nombre;
-    String apellido;
-    LocalDate fechaNac;
+    int idAlumno = -1;  //valor inválido xq lo asignara la BD (Autincrement)
+    String nombre;      //VARCHAR
+    String apellido;    //VARCHAR
+    LocalDate fechaNac; //parsear a DATETIME
     int dni;
-    boolean activo;
+    boolean activo;     //TINYINT
 
     public Alumno(int idAlumno, String nombre, String apellido, LocalDate fechaNac, int dni, boolean activo) {
         this.idAlumno = idAlumno;
@@ -108,6 +108,5 @@ public class Alumno {
             return false;
         }
         return true;
-    }    
-    
+    }     
 }
