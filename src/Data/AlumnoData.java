@@ -120,5 +120,34 @@ public class AlumnoData {
 
 return borrado;
 } 
+        public ArrayList<Alumno>listarAlumno(){
+    ArrayList<Alumno>alumnos =new ArrayList();
+    
+    try{
+    String sql = " SELECT *  FROM alumno WHERE activo = 1 ;";
+    PreparedStatement pst = conx.prepareStatement(sql);
+    ResultSet resultSet = pst.executeQuery();
+    
+    Alumno alu;
+    
+    while(resultSet.next()){
+        
+        alu=new Alumno();
+        alu.setIdAlumno(resultSet.getInt("idAlumno"));
+        alu.setApellido(resultSet.getString("apellido"));
+        alu.setNombre(resultSet.getString("nombre"));
+        alu.setFechaNac(resultSet.getDate("fechaNac").toLocalDate());
+        alu.setDni(resultSet.getInt("dni"));
+        alu.setActivo(resultSet.getBoolean("activo"));
+        
+        alumnos.add(alu);
     }
+    pst.close();
+     }catch(SQLException e){
+
+JOptionPane.showMessageDialog(null, "error al obtner alumno");
+}
+  return  alumnos; 
+    }
+}
 
