@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author Grupo10
@@ -94,6 +95,30 @@ public class AlumnoData {
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
     }
-}
+       public boolean borrarAlumno(int id){
+
+    boolean borrado=false;
+    
+    String sql ="UPDATE alumno SET activo = 0 WHERE idAlumno = ?";
+    try{
+    PreparedStatement pts =conx.prepareStatement(sql);
+    pts.setInt(1, id);
+    
+    if(pts.executeUpdate()!=0){
+    
+    borrado=true;
+    
+    }
+    pts.close();
+    }catch(SQLException e){
+    
+     JOptionPane.showMessageDialog(null, "error al borrar alumno");
+    
+    
+    }
+
+return borrado;
+} 
+    }
+

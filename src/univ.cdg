@@ -2,7 +2,7 @@
 
 <ClassDiagram name="univ">
   <ClassDiagramComponents>
-    <Class name="Materia" package="" visibility="public" xPosition="644.0" yPosition="120.0">
+    <Class name="Materia" package="" visibility="public" xPosition="615.0" yPosition="62.0">
       <Fields>
         <Field name="idMateria" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -28,7 +28,7 @@
         <Method name="tostring" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Alumno" package="" visibility="public" xPosition="47.0" yPosition="9.0">
+    <Class name="Alumno" package="" visibility="public" xPosition="25.0" yPosition="43.0">
       <Fields>
         <Field name="idAlumno" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -60,7 +60,7 @@
         <Method name="tostring" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Cursada" package="" visibility="public" xPosition="96.0" yPosition="355.0">
+    <Class name="Cursada" package="" visibility="public" xPosition="122.0" yPosition="374.0">
       <Fields>
         <Field name="idCursada" type="int" visibility="private"/>
         <Field name="al" type="Alumno" visibility="private"/>
