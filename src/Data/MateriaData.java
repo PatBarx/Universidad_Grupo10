@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Grupo10
@@ -41,8 +43,29 @@ public class MateriaData {
     }
     
     public Materia buscarMateria(int id){   //SELECT 1 ALUMNO
-        Materia mate= new Materia();
-        return mate;        
+                //SELECT 1 ALUMNO
+        Materia mate= null;;
+        String sql="SELECT * FROM alumno WHERE id=?";
+        PreparedStatement ps;
+       try { 
+        ps=conx.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs=ps.executeQuery();
+        while(rs.next()){
+            mate=new Materia();
+            mate.setIdMateria(rs.getInt("idMateria"));
+            mate.setNombre(rs.getString("nombre"));
+            mate.setAnio(rs.getInt("anio"));
+            mate.setActivo(rs.getBoolean("activo"));
+           
+            
+            
+        }
+        
+    } catch (SQLException ex) {
+            Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return mate;         
     }
     
     public ArrayList<Materia> listarMateria(){    //SELECT * Alumnos
@@ -51,9 +74,22 @@ public class MateriaData {
     }
     
     public void actualizarAlumno(Materia mate){ //UPDATE SET
-        mate.setActivo(true);    //cambiar        
+                     //UPDATE SET
+        String query="UPDATE alumno SET nombre=?, anio=?, activo=? WHERE id=?";
+        try {
+        PreparedStatement ps= conx.prepareStatement(query);
+        
+            ps.setString(1, mate.getNombre());
+            ps.setInt(2, mate.getAnio());
+            ps.setBoolean(3,mate.isActivo());
+            ps.setInt(4,mate.getIdMateria());
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }   //cambiar        
     }
-    public void borrarAlumno(int id){   //UPDATE SET / DELETE
+    public void borrarMateria(int id){   //UPDATE SET / DELETE
         Materia mate= new Materia();
         mate.setActivo(false);   //cambiar
     }
