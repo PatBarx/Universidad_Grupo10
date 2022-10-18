@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author Grupo10
@@ -69,8 +70,31 @@ public class MateriaData {
     }
     
     public ArrayList<Materia> listarMateria(){    //SELECT * Alumnos
-        ArrayList<Materia> mate= new ArrayList();
-        return mate;
+           ArrayList<Materia>mater =new ArrayList();
+    
+    try{
+    String sql = " SELECT *  FROM alumno WHERE activo = 1 ;";
+    PreparedStatement pst = conx.prepareStatement(sql);
+    ResultSet rs = pst.executeQuery();
+    
+    Materia mate;
+    
+    while(rs.next()){
+        
+            mate=new Materia();
+            mate.setIdMateria(rs.getInt("idMateria"));
+            mate.setNombre(rs.getString("nombre"));
+            mate.setAnio(rs.getInt("anio"));
+            mate.setActivo(rs.getBoolean("activo"));
+        
+        mater.add(mate);
+    }
+    pst.close();
+     }catch(SQLException e){
+
+JOptionPane.showMessageDialog(null, "error al obtner alumno");
+}
+  return  mater;
     }
     
     public void actualizarAlumno(Materia mate){ //UPDATE SET
@@ -89,9 +113,29 @@ public class MateriaData {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }   //cambiar        
     }
-    public void borrarMateria(int id){   //UPDATE SET / DELETE
-        Materia mate= new Materia();
-        mate.setActivo(false);   //cambiar
+    public boolean borrarMateria(int id){   //UPDATE SET / DELETE
+       
+    boolean borrado=false;
+    
+    String sql ="UPDATE ,materia SET activo = 0 WHERE idMateria = ?";
+    try{
+    PreparedStatement pts =conx.prepareStatement(sql);
+    pts.setInt(1, id);
+    
+    if(pts.executeUpdate()!=0){
+    
+    borrado=true;
+    
+    }
+    pts.close();
+    }catch(SQLException e){
+    
+     JOptionPane.showMessageDialog(null, "error al borrar materia");
+    
+    
+    }
+
+return borrado;
     }
     
 }
