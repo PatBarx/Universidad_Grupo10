@@ -18,6 +18,10 @@ public class Universidad_Grupo10 {
         //conect.buscarConexion();  //prueba de funcionamiento 
                AlumnoData adt =new AlumnoData(conect);
 
+
+
+
+//esto para probar listar alumnos
     ArrayList<Alumno>lista =adt.listarAlumno();
     
         for (Alumno alu : lista) {
