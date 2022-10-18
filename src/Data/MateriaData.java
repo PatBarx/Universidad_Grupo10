@@ -46,7 +46,7 @@ public class MateriaData {
     public Materia buscarMateria(int id){   //SELECT 1 ALUMNO
                 //SELECT 1 ALUMNO
         Materia mate= null;;
-        String sql="SELECT * FROM alumno WHERE id=?";
+        String sql="SELECT * FROM materia WHERE idMateria=?";
         PreparedStatement ps;
        try { 
         ps=conx.prepareStatement(sql);
@@ -73,7 +73,7 @@ public class MateriaData {
            ArrayList<Materia>mater =new ArrayList();
     
     try{
-    String sql = " SELECT *  FROM alumno WHERE activo = 1 ;";
+    String sql = " SELECT *  FROM materia WHERE activo = 1 ;";
     PreparedStatement pst = conx.prepareStatement(sql);
     ResultSet rs = pst.executeQuery();
     
@@ -99,7 +99,7 @@ JOptionPane.showMessageDialog(null, "error al obtner alumno");
     
     public void actualizarAlumno(Materia mate){ //UPDATE SET
                      //UPDATE SET
-        String query="UPDATE alumno SET nombre=?, anio=?, activo=? WHERE id=?";
+        String query="UPDATE materia SET nombre=?, anio=?, activo=? WHERE idMateria=?";
         try {
         PreparedStatement ps= conx.prepareStatement(query);
         
