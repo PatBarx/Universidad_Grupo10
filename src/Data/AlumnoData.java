@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Grupo10
@@ -42,21 +44,56 @@ public class AlumnoData {
         }
     }
     
-    public Alumno buscarAlumno(int id){   //SELECT 1 ALUMNO
-        Alumno alu= new Alumno();
-        return alu;        
+    public Alumno buscarAlumno(int id){   
+        //SELECT 1 ALUMNO
+        Alumno alu= null;;
+        String sql="SELECT * FROM alumno WHERE id=?";
+        PreparedStatement ps;
+       try { 
+        ps=conx.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs=ps.executeQuery();
+        while(rs.next()){
+            alu=new Alumno();
+            alu.setIdAlumno(rs.getInt("idAlumno"));
+            alu.setNombre(rs.getString("nombre"));
+            alu.setApellido(rs.getString("apellido"));
+            alu.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+            alu.setDni(rs.getInt("dni"));
+            alu.setActivo(rs.getBoolean("activo"));
+           
+            
+            
+        }
+        
+    } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return alu;
     }
-    
+       
     public ArrayList<Alumno> listarAlumnos(){    //SELECT * Alumnos
         ArrayList<Alumno> alu= new ArrayList();
         return alu;
     }
     
-    public void actualizarAlumno(Alumno alu){ //UPDATE SET
-        alu.setActivo(true);    //cambiar        
-    }
-    public void borrarAlumno(int id){   //UPDATE SET / DELETE
-        Alumno alu= new Alumno();
-        alu.setActivo(false);   //cambiar
+    public void actualizarAlumno(Alumno alu){ 
+        //UPDATE SET
+        String query="UPDATE alumno SET nombre=?, apellido=?, fechNac=?, dni=?, activo=? WHERE id=?";
+        try {
+        PreparedStatement ps= conx.prepareStatement(query);
+        
+         ps.setString(1, alu.getNombre());
+            ps.setString(2, alu.getApellido());
+            ps.setDate(3, Date.valueOf(alu.getFechaNac()));
+            ps.setInt(4, alu.getDni());
+            ps.setBoolean(5, true);
+            ps.setInt(6,alu.getIdAlumno());
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 }
