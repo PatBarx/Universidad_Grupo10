@@ -16,21 +16,21 @@ import javax.swing.JOptionPane;
  * @author Grupo10
  */
 public class AlumnoData {
-    private Connection conx = null;
+        private Connection conx = null;
 
     public AlumnoData(MiConexion conexion) {
         this.conx = conexion.buscarConexion();
     }
     
     public void guardarAlumno(Alumno alu) {  //INSERT INTO
-        String query = "INSERT INTO alumno(nombre, apellido, fechNac, dni, activo) VALUES(?,?,?,?,?)"; //"?" Comodines para reutilizar query
+        String query = "INSERT INTO alumno(nombre, apellido,fechaNac, dni, activo) VALUES(?,?,?,?,?)"; //"?" Comodines para reutilizar query
 
         try {
             PreparedStatement ps = conx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, alu.getNombre());
             ps.setString(2, alu.getApellido());
             ps.setDate(3, Date.valueOf(alu.getFechaNac()));
-            ps.setInt(4, alu.getDni());
+            ps.setLong(4, alu.getDni());
             ps.setBoolean(5, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -41,14 +41,14 @@ public class AlumnoData {
                 ps.close();
             }
         } catch (SQLException excep) {
-            System.out.println("WTF???");
+            System.out.println(excep);
         }
     }
     
-    public Alumno buscarAlumno(int id){   
-        //SELECT 1 ALUMNO
+    public Alumno buscarAlumno(int id){   //SELECT 1 ALUMNO
+               //SELECT 1 ALUMNO
         Alumno alu= null;;
-        String sql="SELECT * FROM alumno WHERE id=?";
+        String sql="SELECT * FROM alumno WHERE idAlumno=?";
         PreparedStatement ps;
        try { 
         ps=conx.prepareStatement(sql);
@@ -70,58 +70,11 @@ public class AlumnoData {
     } catch (SQLException ex) {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return alu;
+       return alu;      
     }
-       
+    
     public ArrayList<Alumno> listarAlumnos(){    //SELECT * Alumnos
-        ArrayList<Alumno> alu= new ArrayList();
-        return alu;
-    }
-    
-    public void actualizarAlumno(Alumno alu){ 
-        //UPDATE SET
-        String query="UPDATE alumno SET nombre=?, apellido=?, fechNac=?, dni=?, activo=? WHERE id=?";
-        try {
-        PreparedStatement ps= conx.prepareStatement(query);
-        
-         ps.setString(1, alu.getNombre());
-            ps.setString(2, alu.getApellido());
-            ps.setDate(3, Date.valueOf(alu.getFechaNac()));
-            ps.setInt(4, alu.getDni());
-            ps.setBoolean(5, true);
-            ps.setInt(6,alu.getIdAlumno());
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-       public boolean borrarAlumno(int id){
-
-    boolean borrado=false;
-    
-    String sql ="UPDATE alumno SET activo = 0 WHERE idAlumno = ?";
-    try{
-    PreparedStatement pts =conx.prepareStatement(sql);
-    pts.setInt(1, id);
-    
-    if(pts.executeUpdate()!=0){
-    
-    borrado=true;
-    
-    }
-    pts.close();
-    }catch(SQLException e){
-    
-     JOptionPane.showMessageDialog(null, "error al borrar alumno");
-    
-    
-    }
-
-return borrado;
-} 
-        public ArrayList<Alumno>listarAlumno(){
-    ArrayList<Alumno>alumnos =new ArrayList();
+          ArrayList<Alumno>alumnos =new ArrayList();
     
     try{
     String sql = " SELECT *  FROM alumno WHERE activo = 1 ;";
@@ -147,7 +100,51 @@ return borrado;
 
 JOptionPane.showMessageDialog(null, "error al obtner alumno");
 }
-  return  alumnos; 
+  return  alumnos;
+    }
+    
+    public void actualizarAlumno(Alumno alu){ //UPDATE SET
+            //UPDATE SET
+        String query="UPDATE alumno SET nombre=?, apellido=?, fechaNac=?, dni=?, activo=? WHERE idAlumno=?";
+        //System.out.println(query);
+        try {
+        PreparedStatement ps= conx.prepareStatement(query);
+        
+         ps.setString(1, alu.getNombre());
+            ps.setString(2, alu.getApellido());
+            ps.setDate(3, Date.valueOf(alu.getFechaNac()));
+            ps.setLong(4, alu.getDni());
+            ps.setBoolean(5, true);
+            ps.setInt(6,alu.getIdAlumno());
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+    }
+    public void borrarAlumno(int id){   //UPDATE SET / DELETE
+     
+    boolean borrado=false;
+    
+    String sql ="UPDATE alumno SET activo = 0 WHERE idAlumno = ?";
+    try{
+    PreparedStatement pts =conx.prepareStatement(sql);
+    pts.setInt(1, id);
+    
+    if(pts.executeUpdate()!=0){
+    
+    borrado=true;
+    
+    }
+    pts.close();
+    }catch(SQLException e){
+    
+     JOptionPane.showMessageDialog(null, "error al borrar alumno");
+    
+    
+    }
+
+
     }
 }
 
