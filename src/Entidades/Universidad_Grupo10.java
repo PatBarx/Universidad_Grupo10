@@ -12,45 +12,60 @@ import java.util.ArrayList;
 public class Universidad_Grupo10 {
 
     public static void main(String[] args) {
-                 System.out.println("estos son cambios");               
+        System.out.println("---   1,2,3 Probando Cambios   ---\n");               
         //LocalDate fecha = LocalDate.now();
         
         MiConexion conec = new MiConexion("jdbc:mysql://localhost/tp_universidad", "root", "");
         //conect.buscarConexion();  //prueba de funcionamiento 
-               AlumnoData adt =new AlumnoData(conec);
-               MateriaData mat=new MateriaData(conec);
-               //System.out.println(conec.getUrl());
-               //System.out.println(conec.getUsuario());
-               //System.out.println(conec.getPass());
+        AlumnoData adt =new AlumnoData(conec);
+        MateriaData mat=new MateriaData(conec);
+        //System.out.println(conec.getUrl());
+        //System.out.println(conec.getUsuario());
+        //System.out.println(conec.getPass());               
+        
+        //LocalDate fechaNac = LocalDate.of(1972,05,23);
+        Alumno al=new Alumno(5,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
+        Materia ma=new Materia("INGLES",3,true);
 
+        //---GUARDAR MATERIA:
+        //mat.guardarMateria(ma);
+        //---BUSCAR MATERIA:
+        //System.out.println( mat.buscarMateria(ma.getIdMateria()));
+        //---BORRAR MATERIA:
+        //mat.borrarMateria(ma.getIdMateria());
+        //---ACTUALIZAR MATERIA:
+        //mat.actualizarMateria(ma);
 
-
-
-//esto para probar listar alumnos
-    ArrayList<Alumno>lista =adt.listarAlumnos();
-    //LocalDate fechaNac = LocalDate.of(1972,05,23);
-  Alumno al=new Alumno(17,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
-  Materia ma=new Materia(6,"biologia2",5,true);
-  
- //mat.guardarMateria(ma);
-//System.out.println( mat.buscarMateria(6));
-
-//mat.borrarMateria(ma.getIdMateria());
-mat.actualizarMateria(ma);
-   //adt.guardarAlumno(al);
-  // adt.actualizarAlumno(al);
+        //---GUARDAR ALUMNO:
+        //adt.guardarAlumno(al);
+        //---ACTUALIZAR ALUMNO:
+        //adt.actualizarAlumno(al);
+        //---BUSCAR ALUMNO:
         //System.out.println(adt.buscarAlumno(al.getIdAlumno()));
-    //adt.borrarAlumno(al.getIdAlumno());
+        //---BORRAR ALUMNO:
+        //adt.borrarAlumno(al.getIdAlumno());
+
+        //---LISTAR y MOSTRAR ALUMNOS:
+        //---Probar listar alumnos
+        ArrayList<Alumno>lista =adt.listarAlumnos();
+        
         for (Alumno alu : lista) {
-            System.out.println("dni= "+alu.getDni()+" apellido= "+alu.getApellido()+ " nombre= "+alu.getNombre()+" fecha de nacimiento= "+alu.getFechaNac());
-           
-        }
-        System.out.println("----------------------------------------------------------");
-         ArrayList<Materia>mate =mat.listarMateria();
-    
+            System.out.println("-DNI: \t"+alu.getDni()
+                    +"\t| -Legajo-Nº: " + alu.getIdAlumno()
+                    +"\n-Apellido: "+alu.getApellido()
+                    + "\t| -Nombre: "+alu.getNombre()
+                    +"\n-Fecha de nacimiento: \t"+alu.getFechaNac()
+                    + "\n");
+            }
+        System.out.println("-------------------------------------------------");
+        
+        //---LISTAR y MOSTRAR MATERIAS:
+        ArrayList<Materia>mate =mat.listarMateria();
+
         for (Materia aux : mate) {
-            System.out.println(" anio= "+aux.getAnio()+" nombre= "+aux.getNombre()+" activo= "+aux.isActivo());
-           
+            System.out.println("Año: "+aux.getAnio()
+                    +"\t| -Nombre:   "+aux.getNombre()
+                    +"\t| -Activo: \t"+aux.isActivo());
         }
     }
 }
