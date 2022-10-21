@@ -7,7 +7,7 @@ public class Cursada {
     int idCursada;
     Alumno al;
     Materia ma;
-   double nota;
+    double nota;
 
     public Cursada(int idCursada, Alumno al, Materia ma, double nota) {
         this.idCursada = idCursada;
