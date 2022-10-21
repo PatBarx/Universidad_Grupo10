@@ -30,10 +30,16 @@ public class Universidad_Grupo10 {
     ArrayList<Alumno>lista =adt.listarAlumnos();
     //LocalDate fechaNac = LocalDate.of(1972,05,23);
   Alumno al=new Alumno(17,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
+  Materia ma=new Materia(6,"biologia2",5,true);
   
+ //mat.guardarMateria(ma);
+//System.out.println( mat.buscarMateria(6));
+
+//mat.borrarMateria(ma.getIdMateria());
+mat.actualizarMateria(ma);
    //adt.guardarAlumno(al);
   // adt.actualizarAlumno(al);
-        System.out.println(adt.buscarAlumno(al.getIdAlumno()));
+        //System.out.println(adt.buscarAlumno(al.getIdAlumno()));
     //adt.borrarAlumno(al.getIdAlumno());
         for (Alumno alu : lista) {
             System.out.println("dni= "+alu.getDni()+" apellido= "+alu.getApellido()+ " nombre= "+alu.getNombre()+" fecha de nacimiento= "+alu.getFechaNac());

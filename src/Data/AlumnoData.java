@@ -138,7 +138,7 @@ JOptionPane.showMessageDialog(null, "error al obtner alumno");
     }
     pts.close();
     }catch(SQLException e){
-    
+        
      JOptionPane.showMessageDialog(null, "error al borrar alumno");
     
     

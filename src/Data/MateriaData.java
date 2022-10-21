@@ -97,7 +97,7 @@ JOptionPane.showMessageDialog(null, "error al obtner alumno");
   return  mater;
     }
     
-    public void actualizarAlumno(Materia mate){ //UPDATE SET
+    public void actualizarMateria(Materia mate){ //UPDATE SET
                      //UPDATE SET
         String query="UPDATE materia SET nombre=?, anio=?, activo=? WHERE idMateria=?";
         try {
@@ -117,7 +117,7 @@ JOptionPane.showMessageDialog(null, "error al obtner alumno");
        
     boolean borrado=false;
     
-    String sql ="UPDATE ,materia SET activo = 0 WHERE idMateria = ?";
+    String sql ="UPDATE materia SET activo = 0 WHERE idMateria = ?";
     try{
     PreparedStatement pts =conx.prepareStatement(sql);
     pts.setInt(1, id);
@@ -129,7 +129,7 @@ JOptionPane.showMessageDialog(null, "error al obtner alumno");
     }
     pts.close();
     }catch(SQLException e){
-    
+    System.out.println(e);
      JOptionPane.showMessageDialog(null, "error al borrar materia");
     
     
