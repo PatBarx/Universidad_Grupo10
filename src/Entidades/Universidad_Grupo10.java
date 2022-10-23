@@ -1,12 +1,10 @@
 package Entidades;
 
 import Data.AlumnoData;
-import Data.CursadaData;
 import Data.MateriaData;
 import Data.MiConexion;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  * @author Grupo 10
@@ -21,16 +19,14 @@ public class Universidad_Grupo10 {
         //conect.buscarConexion();  //prueba de funcionamiento 
         AlumnoData adt =new AlumnoData(conec);
         MateriaData mat=new MateriaData(conec);
-        CursadaData curs=new CursadaData(conec);
         //System.out.println(conec.getUrl());
         //System.out.println(conec.getUsuario());
         //System.out.println(conec.getPass());               
         
         //LocalDate fechaNac = LocalDate.of(1972,05,23);
-        Alumno alu1=new Alumno(2,"osvaldo","aguero",LocalDate.of(2000,8,11),23334566,true);
-        //Alumno al=new Alumno(5,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
-        Materia ma=new Materia(5,"biologia2",5,true);
-        Cursada cu=new Cursada(alu1,ma,8);
+        Alumno al=new Alumno(5,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
+        Materia ma=new Materia("INGLES",3,true);
+
         //---GUARDAR MATERIA:
         //mat.guardarMateria(ma);
         //---BUSCAR MATERIA:
@@ -71,30 +67,5 @@ public class Universidad_Grupo10 {
                     +"\t| -Nombre:   "+aux.getNombre()
                     +"\t| -Activo: \t"+aux.isActivo());
         }
-                System.out.println("------------------------------------------------------------------------------");
-         ArrayList<Materia>materias =curs.inscripcionMateria(alu1);
-                 for (Materia aux : materias) {
-             JOptionPane.showMessageDialog(null," anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
-                     System.out.println(" anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
-        // System.out.println(" idCursada= "+aux.getIdCursada()+" idAlumno= "+aux.getAl().getIdAlumno()+" idMateria= "+aux.getMa().getIdMateria()+" nota= "+aux.getNota());
-           
-        //}
-    }
-           System.out.println("------------------------------------------------------------------------------");
-         ArrayList<Materia>mater = curs.noInscripcionMateria(alu1);
-                 for (Materia aux : mater) {
-             JOptionPane.showMessageDialog(null," anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
-                     System.out.println(" anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
-        // System.out.println(" idCursada= "+aux.getIdCursada()+" idAlumno= "+aux.getAl().getIdAlumno()+" idMateria= "+aux.getMa().getIdMateria()+" nota= "+aux.getNota());
-           
-        //}
-    }
-            System.out.println("------------------------------------------------------------------------------");
-         ArrayList<Alumno>alumnos =curs.inscripcionAlumno(ma);
-                 for (Alumno aux : alumnos) {
-             JOptionPane.showMessageDialog(null," nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
-             System.out.println(" nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
-    
-}
     }
 }
