@@ -39,7 +39,7 @@ public class AlumnoData {
                 alu.setIdAlumno(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "AlumnoData Info : Carga Exitosa");
             } else {
-                JOptionPane.showMessageDialog(null, "AlumnoData Error: No se pudo obtener ID");                
+                JOptionPane.showMessageDialog(null, "AlumnoData Error: No se pudo obtener ID");
             }
             ps.close();
         } catch (SQLException excep) {
@@ -95,7 +95,7 @@ public class AlumnoData {
 
                 alumnos.add(alu);
             }
-            pst.close();            
+            pst.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "AlumnoData Error: error al obtner alumnos");
         }
@@ -115,8 +115,8 @@ public class AlumnoData {
             ps.setLong(4, alu.getDni());
             ps.setBoolean(5, true);
             ps.setInt(6, alu.getIdAlumno());
-            ps.executeUpdate();            
-            
+            ps.executeUpdate();
+
             if (ps.executeUpdate() != 0) {
                 JOptionPane.showMessageDialog(null, "AlumnoData Info: ACTUALIZADO");
             }

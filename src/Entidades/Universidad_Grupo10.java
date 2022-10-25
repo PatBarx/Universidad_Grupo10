@@ -27,13 +27,17 @@ public class Universidad_Grupo10 {
         //System.out.println(conec.getPass());               
         
         //LocalDate fechaNac = LocalDate.of(1972,05,23);
-        Alumno alu1=new Alumno(2,"osvaldo","aguero",LocalDate.of(2000,8,11),23334566,true);
-        //Alumno al=new Alumno(5,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
-        Materia ma=new Materia(4,"historia",4,true);
+        //Alumno alu1=new Alumno(2,"osvaldo","aguero",LocalDate.of(2000,8,11),23334566,true);
+        Alumno alu1=new Alumno(6,"pato","barcos",LocalDate.of(1981,9,23),2223523,true);
+        Materia ma=new Materia(14,"WEB",5,true);
         Cursada cu=new Cursada(alu1,ma,8);
-         //curs.guardarCursada(cu);
-        // curs.actualizarNota(2, 4, 8.5);
-         //curs.borrarCursada(55);
+        
+        //---GUARDAR CURSADA:
+        curs.guardarCursada(cu);
+        //---ACTUALIZAR CURSADA:
+        //curs.actualizarNota(6, 4, 9);
+        //---BORRAR CURSADA:
+        //curs.borrarCursada(6);
 
         //---GUARDAR MATERIA:
         //mat.guardarMateria(ma);
@@ -45,7 +49,7 @@ public class Universidad_Grupo10 {
         //mat.actualizarMateria(ma);
 
         //---GUARDAR ALUMNO:
-        //adt.guardarAlumno(al);
+        //adt.guardarAlumno(alu1);
         //---ACTUALIZAR ALUMNO:
         //adt.actualizarAlumno(al);
         //---BUSCAR ALUMNO:
@@ -75,30 +79,32 @@ public class Universidad_Grupo10 {
                     +"\t| -Nombre:   "+aux.getNombre()
                     +"\t| -Activo: \t"+aux.isActivo());
         }
-                System.out.println("------------------------------------------------------------------------------");
-         ArrayList<Materia>materias =curs.inscripcionMateria(alu1);
-                 for (Materia aux : materias) {
-             JOptionPane.showMessageDialog(null," anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
-                     System.out.println(" anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
+        //---LISTAR y MOSTRAR ALUMNOS:
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("MATERIAS EN LAS QUE ESTA INSCRIPTO EL ALUMNO:");
+        ArrayList<Materia>materias =curs.inscripcionMateria(alu1);
+        for (Materia aux : materias) {
+        //--JOptionPane.showMessageDialog(null," anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
+        System.out.println(" anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
         // System.out.println(" idCursada= "+aux.getIdCursada()+" idAlumno= "+aux.getAl().getIdAlumno()+" idMateria= "+aux.getMa().getIdMateria()+" nota= "+aux.getNota());
-           
-        //}
-    }
-           System.out.println("------------------------------------------------------------------------------");
-         ArrayList<Materia>mater = curs.noInscripcionMateria(alu1);
-                 for (Materia aux : mater) {
-             JOptionPane.showMessageDialog(null," anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
-                     System.out.println(" anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
+        }
+        
+        //---LISTAR y MOSTRAR :
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("MATERIAS EN LAS QUE NO ESTA INSCRIPTO EL ALUMNO:");
+        ArrayList<Materia>mater = curs.noInscripcionMateria(alu1);
+        for (Materia aux : mater) {
+        //-- JOptionPane.showMessageDialog(null," anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
+        System.out.println(" anio= "+aux.getAnio()+" nombre= "+aux.getNombre());
         // System.out.println(" idCursada= "+aux.getIdCursada()+" idAlumno= "+aux.getAl().getIdAlumno()+" idMateria= "+aux.getMa().getIdMateria()+" nota= "+aux.getNota());
-           
-        //}
-    }
-            System.out.println("------------------------------------------------------------------------------");
-         ArrayList<Alumno>alumnos =curs.inscripcionAlumno(ma);
-                 for (Alumno aux : alumnos) {
-             JOptionPane.showMessageDialog(null," nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
-             System.out.println(" nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
-    
-}
+        }   
+                 
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("ALUMNOS que estan inscriptos en la materia:");
+        ArrayList<Alumno>alumnos =curs.inscripcionAlumno(ma);
+        for (Alumno aux : alumnos) {
+        //-- JOptionPane.showMessageDialog(null," nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
+        System.out.println(" nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
+        }
     }
 }
