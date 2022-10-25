@@ -31,6 +31,9 @@ public class Universidad_Grupo10 {
         //Alumno al=new Alumno(5,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
         Materia ma=new Materia("INGLES",3,true);
         Cursada cu=new Cursada(alu1,ma,8);
+         //curs.guardarCursada(cu);
+         //curs.actualizarNota(17, 1, 4.5);
+         //curs.borrarCursada(24);
 
         //---GUARDAR MATERIA:
         //mat.guardarMateria(ma);
