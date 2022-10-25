@@ -39,7 +39,7 @@ public void guardarCursada(Cursada cur){
             }
             ps.close();
         } catch (SQLException excep) {
-            System.out.println(excep);
+            System.out.println("no se pudo cargar");
         }
 
 }
@@ -53,7 +53,7 @@ public void actualizarNota(int idAlumno,int idMateria, double nota){
            
             ps.executeUpdate();
             
-                JOptionPane.showMessageDialog(null, " Carga Exitosa");
+                JOptionPane.showMessageDialog(null, " actualizacion Exitosa");
            
                 ps.close();
             

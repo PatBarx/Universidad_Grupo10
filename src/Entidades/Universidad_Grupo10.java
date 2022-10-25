@@ -29,11 +29,11 @@ public class Universidad_Grupo10 {
         //LocalDate fechaNac = LocalDate.of(1972,05,23);
         Alumno alu1=new Alumno(2,"osvaldo","aguero",LocalDate.of(2000,8,11),23334566,true);
         //Alumno al=new Alumno(5,"daniel","de la iglesia",LocalDate.of(1972,05,23),2261523,true);
-        Materia ma=new Materia(3,"geografia",3,true);
+        Materia ma=new Materia(4,"historia",4,true);
         Cursada cu=new Cursada(alu1,ma,8);
-         curs.guardarCursada(cu);
-         //curs.actualizarNota(17, 1, 4.5);
-         //curs.borrarCursada(24);
+         //curs.guardarCursada(cu);
+        // curs.actualizarNota(2, 4, 8.5);
+         curs.borrarCursada(55);
 
         //---GUARDAR MATERIA:
         //mat.guardarMateria(ma);
