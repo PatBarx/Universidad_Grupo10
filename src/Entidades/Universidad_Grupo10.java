@@ -33,7 +33,7 @@ public class Universidad_Grupo10 {
         Cursada cu=new Cursada(alu1,ma,8);
          //curs.guardarCursada(cu);
         // curs.actualizarNota(2, 4, 8.5);
-         curs.borrarCursada(55);
+         //curs.borrarCursada(55);
 
         //---GUARDAR MATERIA:
         //mat.guardarMateria(ma);
