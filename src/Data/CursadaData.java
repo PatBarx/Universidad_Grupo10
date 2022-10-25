@@ -35,8 +35,9 @@ public void guardarCursada(Cursada cur){
                 JOptionPane.showMessageDialog(null, "AlumnoData Info : Carga Exitosa");
             } else {
                 System.out.println("No se pudo obtener ID");
-                ps.close();
+                
             }
+            ps.close();
         } catch (SQLException excep) {
             System.out.println(excep);
         }
