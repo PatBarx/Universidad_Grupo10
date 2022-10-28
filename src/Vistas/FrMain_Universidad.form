@@ -178,18 +178,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="253" max="-2" attributes="0"/>
-                  <EmptySpace pref="168" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" pref="374" max="-2" attributes="0"/>
+                  <EmptySpace pref="108" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="307" max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="230" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                  <EmptySpace pref="266" max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -198,7 +198,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/Escudo uniG10-33porciento.png"/>
+              <Image iconType="3" name="/Recursos/Escudo uniG10-50porciento.png"/>
             </Property>
           </Properties>
         </Component>
