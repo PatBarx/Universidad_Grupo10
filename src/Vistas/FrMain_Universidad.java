@@ -23,17 +23,17 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMenuFormAlum = new javax.swing.JMenuItem();
+        jMenuFormMateria = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuCursada = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuNotas = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuListaAlum = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,8 +64,8 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
-        jMenuItem1.setText("SALIR");
-        jMenu1.add(jMenuItem1);
+        jMenuSalir.setText("SALIR");
+        jMenu1.add(jMenuSalir);
 
         jMenuBar1.add(jMenu1);
 
@@ -73,26 +73,26 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenu2.setText("Alumnos");
         jMenu2.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
-        jMenuItem2.setText("Formulario Alumnos");
-        jMenu2.add(jMenuItem2);
+        jMenuFormAlum.setText("Formulario Alumnos");
+        jMenu2.add(jMenuFormAlum);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu3.setText("Materias");
-        jMenu3.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
+        jMenuFormMateria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jMenuFormMateria.setText("Materias");
+        jMenuFormMateria.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
         jMenuItem3.setText("Formulario Materias");
-        jMenu3.add(jMenuItem3);
+        jMenuFormMateria.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuFormMateria);
 
         jMenu4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu4.setText("Inscripciones");
         jMenu4.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
-        jMenuItem4.setText("Cursadas");
-        jMenu4.add(jMenuItem4);
+        jMenuCursada.setText("Cursadas");
+        jMenu4.add(jMenuCursada);
 
         jMenuBar1.add(jMenu4);
 
@@ -100,8 +100,8 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenu5.setText("Carga de Notas");
         jMenu5.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
-        jMenuItem5.setText("Actualizacion de Notas");
-        jMenu5.add(jMenuItem5);
+        jMenuNotas.setText("Actualizacion de Notas");
+        jMenu5.add(jMenuNotas);
 
         jMenuBar1.add(jMenu5);
 
@@ -109,8 +109,8 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenu6.setText("Consultas");
         jMenu6.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
-        jMenuItem6.setText("Cursada de Alumnos x Materia");
-        jMenu6.add(jMenuItem6);
+        jMenuListaAlum.setText("Cursada de Alumnos x Materia");
+        jMenu6.add(jMenuListaAlum);
 
         jMenuBar1.add(jMenu6);
 
@@ -182,16 +182,16 @@ public class FrMain_Universidad extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuCursada;
+    private javax.swing.JMenuItem jMenuFormAlum;
+    private javax.swing.JMenu jMenuFormMateria;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuListaAlum;
+    private javax.swing.JMenuItem jMenuNotas;
+    private javax.swing.JMenuItem jMenuSalir;
     // End of variables declaration//GEN-END:variables
 }
