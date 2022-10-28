@@ -108,9 +108,9 @@ public class Universidad_Grupo10 {
         }
         System.out.println("########################################################");
         
-        Cursada curso =new Cursada();
-        curso=curs.obtenerCursada(1, 2);
-        System.out.println(curso);
+       
+        
+        System.out.println(curs.obtenerCursada(1, 2));
         
     }
 }
