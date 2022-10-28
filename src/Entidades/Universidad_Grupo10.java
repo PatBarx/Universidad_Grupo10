@@ -21,7 +21,7 @@ public class Universidad_Grupo10 {
         //conect.buscarConexion();  //prueba de funcionamiento 
         AlumnoData adt =new AlumnoData(conec);
         MateriaData mat=new MateriaData(conec);
-        CursadaData curs=new CursadaData(conec);
+        CursadaData curs=new CursadaData(conec,adt,mat);
         //System.out.println(conec.getUrl());
         //System.out.println(conec.getUsuario());
         //System.out.println(conec.getPass());               
@@ -106,5 +106,11 @@ public class Universidad_Grupo10 {
         //-- JOptionPane.showMessageDialog(null," nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
         System.out.println(" nombre= "+aux.getNombre()+" apellido= "+aux.getApellido());
         }
+        System.out.println("########################################################");
+        
+        Cursada curso =new Cursada();
+        curso=curs.obtenerCursada(1, 2);
+        System.out.println(curso);
+        
     }
 }

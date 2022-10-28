@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,10 +19,16 @@ import javax.swing.JOptionPane;
 public class CursadaData {
 
     private Connection con = null;
+    private AlumnoData aluD;
+    private MateriaData matDa;
 
-    public CursadaData(MiConexion conexion) {
+    public CursadaData(MiConexion conexion,AlumnoData aluD, MateriaData matDa) {
         this.con = conexion.buscarConexion();
+         this.aluD = aluD;
+        this.matDa = matDa;
     }
+
+    
 
     public void guardarCursada(Cursada cur) {
         String query = "INSERT INTO cursada(idAlumno, IdMateria, nota) VALUES(?,?,?)";
@@ -171,4 +179,31 @@ public class CursadaData {
         }
         return alumnos;
     }
+    
+   public Cursada obtenerCursada(int idAlumno,int idMateria){
+       String sql="SELECT * FROM `cursada` WHERE cursada.idAlumno =? AND cursada.idMateria= ?;";
+           Cursada cur=null;
+       try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ps.setInt(2, idMateria);
+           
+           ResultSet rs = ps.executeQuery();
+          
+           cur =new Cursada();
+           cur.setAl(aluD.buscarAlumno(rs.getInt(idAlumno)));
+           cur.setMa(matDa.buscarMateria(rs.getInt(idMateria)));
+           cur.setNota(rs.getDouble("nota"));
+           cur.setIdCursada(rs.getInt("idCursada"));
+          
+        }catch(Exception e){JOptionPane.showMessageDialog(null, "ERROR\n" + e);
+         }
+           
+       return cur; 
+   } 
+ 
+     
+ 
+  
+
 }
