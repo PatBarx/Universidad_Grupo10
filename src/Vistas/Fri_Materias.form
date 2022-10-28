@@ -66,12 +66,12 @@
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,7 +84,7 @@
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="txt_idMateria" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_idMateria" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="2" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="btBuscar" alignment="2" min="-2" pref="59" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
@@ -100,7 +100,7 @@
               <Component id="chkEstado" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="jButton2" min="-2" pref="134" max="-2" attributes="0"/>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="btGuarda" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="btBorra" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -126,7 +126,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="ID Materia:"/>
+        <Property name="text" type="java.lang.String" value="Codigo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNombreMateria">
@@ -166,10 +166,13 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btBuscar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkEstado">
       <Properties>
@@ -193,6 +196,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btGuardaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btBorra">
       <Properties>
@@ -201,6 +207,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Borra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBorraActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btActualiza">
       <Properties>
@@ -209,6 +218,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btActualizaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btLimpia">
       <Properties>
@@ -217,6 +229,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Limpia"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimpiaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
