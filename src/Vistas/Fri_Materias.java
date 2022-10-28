@@ -5,24 +5,17 @@
  */
 package Vistas;
 
-import Data.MateriaData;
-import Data.MiConexion;
-import Entidades.Materia;
-import java.sql.Connection;
-
 /**
  *
  * @author Pat
  */
 public class Fri_Materias extends javax.swing.JInternalFrame {
 
-   private MiConexion con = null;
-    private MateriaData matDa;
-
+    /**
+     * Creates new form Jif_Materias
+     */
     public Fri_Materias() {
         initComponents();
-        this.con = new MiConexion("jdbc:mysql://localhost/tp_universidad", "root", "");
-        this.matDa = new MateriaData (con);
     }
 
     /**
@@ -41,7 +34,7 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
         txt_idMateria = new javax.swing.JTextField();
         txtNombreMateria = new javax.swing.JTextField();
         txtAnio = new javax.swing.JTextField();
-        btBuscar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         chkEstado = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
         btGuarda = new javax.swing.JButton();
@@ -53,7 +46,7 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
         lblTitulo.setText("MATERIA");
 
         lbl_idMateria.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_idMateria.setText("Codigo:");
+        lbl_idMateria.setText("ID Materia:");
 
         lblNombreMateria.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblNombreMateria.setText("Materia:");
@@ -67,12 +60,7 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
 
         txtAnio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        btBuscar.setText("buscar");
-        btBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBuscarActionPerformed(evt);
-            }
-        });
+        jButton1.setText("jButton1");
 
         chkEstado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         chkEstado.setText("Estado Activo");
@@ -81,35 +69,15 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
 
         btGuarda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btGuarda.setText("Guardar");
-        btGuarda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btGuardaActionPerformed(evt);
-            }
-        });
 
         btBorra.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btBorra.setText("Borra");
-        btBorra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBorraActionPerformed(evt);
-            }
-        });
 
         btActualiza.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btActualiza.setText("Actualizar");
-        btActualiza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btActualizaActionPerformed(evt);
-            }
-        });
 
         btLimpia.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btLimpia.setText("Limpia");
-        btLimpia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLimpiaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,8 +121,8 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(57, 57, 57)
-                                .addComponent(btBuscar)))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                                .addComponent(jButton1)))))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +133,7 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txt_idMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_idMateria)
-                    .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +146,7 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
                 .addComponent(chkEstado)
                 .addGap(32, 32, 32)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btGuarda)
                     .addComponent(btBorra)
@@ -190,67 +158,14 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btGuardaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardaActionPerformed
-       Materia m=new Materia();
-       String nombre= txtNombreMateria.getText();
-       int anio=Integer.parseInt(txtAnio.getText());
-       boolean estado=chkEstado.isSelected();
-       m.setNombre(nombre);
-       m.setAnio(anio);
-       m.setActivo(estado);
-       matDa.guardarMateria(m);
-      
-       
-    }//GEN-LAST:event_btGuardaActionPerformed
-
-    private void btBorraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBorraActionPerformed
-     //Materia m=new Materia();
-       int idMat= Integer.parseInt(txt_idMateria.getText());
-        matDa.borrarMateria(idMat);
-        //matDa.borrarMateria(Integer.parseInt(txtAnio.getText()));
-    }//GEN-LAST:event_btBorraActionPerformed
-
-    private void btActualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizaActionPerformed
-       Materia ma=new Materia();
-       String nombre= txtNombreMateria.getText();
-       int anio=Integer.parseInt(txtAnio.getText());
-       boolean estado=chkEstado.isSelected();
-       int idMat= Integer.parseInt(txt_idMateria.getText());
-       ma.setIdMateria(idMat);
-       ma.setNombre(nombre);
-       ma.setAnio(anio);
-       ma.setActivo(estado);
-      
-       
-        matDa.actualizarMateria(ma);
-    }//GEN-LAST:event_btActualizaActionPerformed
-
-    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-     
-        int idMat= Integer.parseInt(txt_idMateria.getText());
-           Materia mat=matDa.buscarMateria(idMat);
-            txtNombreMateria.setText(mat.getNombre());
-            String anio=String.valueOf(mat.getAnio());
-            txtAnio.setText(anio);
-            chkEstado.setSelected(mat.isActivo());
-            
-           
-    }//GEN-LAST:event_btBuscarActionPerformed
-
-    private void btLimpiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiaActionPerformed
-        txt_idMateria.setText("");txtNombreMateria.setText("");txtAnio.setText("");
-        chkEstado.setSelected(false);
-
-    }//GEN-LAST:event_btLimpiaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btActualiza;
     private javax.swing.JButton btBorra;
-    private javax.swing.JButton btBuscar;
     private javax.swing.JButton btGuarda;
     private javax.swing.JButton btLimpia;
     private javax.swing.JCheckBox chkEstado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblNombreMateria;
     private javax.swing.JLabel lblTitulo;

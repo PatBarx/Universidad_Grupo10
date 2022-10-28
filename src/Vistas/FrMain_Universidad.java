@@ -1,17 +1,11 @@
-package Vistas;
-
-
-import Data.MateriaData;
-import Data.MiConexion;
-import Vistas.Fri_Materias;
-
 /*
  * @author Grupo10
  */
 public class FrMain_Universidad extends javax.swing.JFrame {
 
-   private MiConexion con = null;
-    private MateriaData matDa;
+    /**
+     * Creates new form JFmainUni_prueba
+     */
     public FrMain_Universidad() {
         initComponents();
     }
@@ -25,7 +19,7 @@ public class FrMain_Universidad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -45,20 +39,20 @@ public class FrMain_Universidad extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Escudo uniG10-50porciento.png"))); // NOI18N
 
-        escritorio1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout escritorio1Layout = new javax.swing.GroupLayout(escritorio1);
-        escritorio1.setLayout(escritorio1Layout);
-        escritorio1Layout.setHorizontalGroup(
-            escritorio1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorio1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(108, Short.MAX_VALUE))
         );
-        escritorio1Layout.setVerticalGroup(
-            escritorio1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorio1Layout.createSequentialGroup()
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap(266, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(76, 76, 76))
@@ -89,11 +83,6 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenuFormMateria.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
         jMenuItem3.setText("Formulario Materias");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
         jMenuFormMateria.add(jMenuItem3);
 
         jMenuBar1.add(jMenuFormMateria);
@@ -133,28 +122,18 @@ public class FrMain_Universidad extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(escritorio1)
+                .addComponent(jDesktopPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio1)
+                .addComponent(jDesktopPane1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       Fri_Materias formMater=new Fri_Materias();
-        //escritorio1.removeAll();
-        escritorio1.repaint();
-        escritorio1.add(formMater);
-        formMater.setVisible(true);
-        escritorio1.moveToFront(formMater);
-
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,8 +178,8 @@ public class FrMain_Universidad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane escritorio1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
