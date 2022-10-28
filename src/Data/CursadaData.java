@@ -180,21 +180,22 @@ public class CursadaData {
         return alumnos;
     }
     
-   public Cursada obtenerCursada(int idAlumno,int idMateria){
+   public Cursada obtenerCursada(int idAl,int idMat){
        String sql="SELECT * FROM `cursada` WHERE cursada.idAlumno =? AND cursada.idMateria= ?;";
            Cursada cur=null;
        try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idAlumno);
-            ps.setInt(2, idMateria);
+            ps.setInt(1, idAl);
+            ps.setInt(2, idMat);
            
            ResultSet rs = ps.executeQuery();
-          
+        while (rs.next()) {  
            cur =new Cursada();
-           cur.setAl(aluD.buscarAlumno(rs.getInt(idAlumno)));
-           cur.setMa(matDa.buscarMateria(rs.getInt(idMateria)));
+           cur.setAl(aluD.buscarAlumno(idAl));
+           cur.setMa(matDa.buscarMateria(idMat));
            cur.setNota(rs.getDouble("nota"));
            cur.setIdCursada(rs.getInt("idCursada"));
+        }
           
         }catch(Exception e){JOptionPane.showMessageDialog(null, "ERROR\n" + e);
          }

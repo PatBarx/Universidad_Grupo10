@@ -33,12 +33,14 @@ public class Universidad_Grupo10 {
         Cursada cu=new Cursada(alu1,ma,8);
         
         //---GUARDAR CURSADA:
-        curs.guardarCursada(cu);
+        //curs.guardarCursada(cu);
         //---ACTUALIZAR CURSADA:
         //curs.actualizarNota(6, 4, 9);
         //---BORRAR CURSADA:
         //curs.borrarCursada(6);
-
+        //---BUSCAR CURSADA:
+        System.out.println(curs.obtenerCursada(1, 2));
+        System.out.println("-------------------------------------------------");
         //---GUARDAR MATERIA:
         //mat.guardarMateria(ma);
         //---BUSCAR MATERIA:
@@ -110,7 +112,6 @@ public class Universidad_Grupo10 {
         
        
         
-        System.out.println(curs.obtenerCursada(1, 2));
         
     }
 }
