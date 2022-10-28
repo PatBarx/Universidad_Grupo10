@@ -66,7 +66,7 @@ public class MateriaData {
                 mate.setAnio(rs.getInt("anio"));
                 mate.setActivo(rs.getBoolean("activo"));
             }
-
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(MateriaData.class.getName()).log(Level.SEVERE, null, ex);
         }
