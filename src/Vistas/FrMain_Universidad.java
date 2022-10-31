@@ -1,4 +1,6 @@
 
+import Vistas.Fri_Alumnos;
+import Vistas.Fri_Inscripciones;
 import Vistas.Fri_Materias;
 
 /*
@@ -77,6 +79,11 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenu2.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
         jMenuFormAlum.setText("Formulario Alumnos");
+        jMenuFormAlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuFormAlumActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuFormAlum);
 
         jMenuBar1.add(jMenu2);
@@ -100,6 +107,11 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenu4.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
         jMenuCursada.setText("Cursadas");
+        jMenuCursada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCursadaActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuCursada);
 
         jMenuBar1.add(jMenu4);
@@ -151,6 +163,24 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         formMater.setVisible(true);
         escritorio1.moveToFront(formMater);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuFormAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFormAlumActionPerformed
+           Fri_Alumnos forAlu=new Fri_Alumnos();
+        //escritorio1.removeAll();
+        escritorio1.repaint();
+        escritorio1.add(forAlu);
+        forAlu.setVisible(true);
+        escritorio1.moveToFront(forAlu); // TODO// T
+    }//GEN-LAST:event_jMenuFormAlumActionPerformed
+
+    private void jMenuCursadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCursadaActionPerformed
+            Fri_Inscripciones ins=new Fri_Inscripciones();
+        //escritorio1.removeAll();
+        escritorio1.repaint();
+        escritorio1.add(ins);
+        ins.setVisible(true);
+        escritorio1.moveToFront(ins); 
+    }//GEN-LAST:event_jMenuCursadaActionPerformed
 
     /**
      * @param args the command line arguments

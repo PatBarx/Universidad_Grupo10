@@ -187,11 +187,13 @@ public class Fri_Inscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbxAlumnoActionPerformed
 
     private void botonInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscriptasActionPerformed
-llenarTablas();
+noIinscriptas.setSelected(false);
+        llenarTablas();
     }//GEN-LAST:event_botonInscriptasActionPerformed
 
     private void noIinscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noIinscriptasActionPerformed
- llenarTablas1();       // TODO add your handling code here:
+ botonInscriptas.setSelected(false);
+        llenarTablas1();       // TODO add your handling code here:
     }//GEN-LAST:event_noIinscriptasActionPerformed
 
     private void btInscribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscribeActionPerformed

@@ -103,7 +103,7 @@ public class CursadaData {
 
     public ArrayList<Materia> inscripcionMateria(Alumno al) {    //SELECT * Alumnos
         ArrayList<Materia> materias = new ArrayList();
-        String sql = " SELECT materia.nombre,materia.anio FROM materia,cursada,alumno WHERE "
+        String sql = " SELECT materia.idMateria, materia.nombre,materia.anio FROM materia,cursada,alumno WHERE "
                 + "materia.idMateria=cursada.idMateria and alumno.idAlumno=cursada.idAlumno and alumno.idAlumno=? ";
 
         try {
@@ -114,7 +114,7 @@ public class CursadaData {
 
             while (rs.next()) {
                 mate = new Materia();
-                //mate.setIdMateria(rs.getInt("idMateria"));
+                mate.setIdMateria(rs.getInt("idMateria"));
                 mate.setNombre(rs.getString("nombre"));
                 mate.setAnio(rs.getInt("anio"));
                 //mate.setActivo(rs.getBoolean("activo"));
@@ -130,7 +130,7 @@ public class CursadaData {
 
     public ArrayList<Materia> noInscripcionMateria(Alumno al) {    //SELECT * Alumnos
         ArrayList<Materia> materias = new ArrayList();
-        String sql = " SELECT materia.*FROM `materia`WHERE materia.idMateria NOT IN (SELECT idMateria FROM cursada WHERE idAlumno =? )";
+        String sql = " SELECT materia.*FROM `materia`WHERE  materia.activo=1 and materia.idMateria NOT IN (SELECT idMateria FROM cursada WHERE idAlumno =? )";
 
         try {
             PreparedStatement pst = con.prepareStatement(sql);
@@ -140,7 +140,7 @@ public class CursadaData {
 
             while (rs.next()) {
                 mate = new Materia();
-                //mate.setIdMateria(rs.getInt("idMateria"));
+                mate.setIdMateria(rs.getInt("idMateria"));
                 mate.setNombre(rs.getString("nombre"));
                 mate.setAnio(rs.getInt("anio"));
                 //mate.setActivo(rs.getBoolean("activo"));
