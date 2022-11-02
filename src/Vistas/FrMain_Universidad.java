@@ -1,7 +1,9 @@
 
 import Vistas.Fri_Alumnos;
 import Vistas.Fri_Inscripciones;
+import Vistas.Fri_ListarAlumnos;
 import Vistas.Fri_Materias;
+import Vistas.Fri_Notas;
 
 /*
  * @author Grupo10
@@ -35,9 +37,9 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuCursada = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        mnuNotas = new javax.swing.JMenu();
         jMenuNotas = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        mnuListarAlumnos = new javax.swing.JMenu();
         jMenuListaAlum = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,23 +118,33 @@ public class FrMain_Universidad extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu5.setText("Carga de Notas");
-        jMenu5.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
+        mnuNotas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mnuNotas.setText("Carga de Notas");
+        mnuNotas.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
         jMenuNotas.setText("Actualizacion de Notas");
-        jMenu5.add(jMenuNotas);
+        jMenuNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuNotasActionPerformed(evt);
+            }
+        });
+        mnuNotas.add(jMenuNotas);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(mnuNotas);
 
-        jMenu6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu6.setText("Consultas");
-        jMenu6.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
+        mnuListarAlumnos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mnuListarAlumnos.setText("Consultas");
+        mnuListarAlumnos.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
         jMenuListaAlum.setText("Cursada de Alumnos x Materia");
-        jMenu6.add(jMenuListaAlum);
+        jMenuListaAlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuListaAlumActionPerformed(evt);
+            }
+        });
+        mnuListarAlumnos.add(jMenuListaAlum);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(mnuListarAlumnos);
 
         setJMenuBar(jMenuBar1);
 
@@ -182,6 +194,24 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         escritorio1.moveToFront(ins); 
     }//GEN-LAST:event_jMenuCursadaActionPerformed
 
+    private void jMenuNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNotasActionPerformed
+              Fri_Notas not=new Fri_Notas();
+        //escritorio1.removeAll();
+        escritorio1.repaint();
+        escritorio1.add(not);
+        not.setVisible(true);
+        escritorio1.moveToFront(not); 
+    }//GEN-LAST:event_jMenuNotasActionPerformed
+
+    private void jMenuListaAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListaAlumActionPerformed
+       Fri_ListarAlumnos  list=new Fri_ListarAlumnos();
+        //escritorio1.removeAll();
+        escritorio1.repaint();
+        escritorio1.add(list);
+        list.setVisible(true);
+        escritorio1.moveToFront(list); 
+    }//GEN-LAST:event_jMenuListaAlumActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,8 +260,6 @@ public class FrMain_Universidad extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCursada;
     private javax.swing.JMenuItem jMenuFormAlum;
@@ -240,5 +268,7 @@ public class FrMain_Universidad extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuListaAlum;
     private javax.swing.JMenuItem jMenuNotas;
     private javax.swing.JMenuItem jMenuSalir;
+    private javax.swing.JMenu mnuListarAlumnos;
+    private javax.swing.JMenu mnuNotas;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,5 @@
 package Vistas;
 
-import Data.MiConexion;
 import Entidades.Alumno;
 import Entidades.Cursada;
 import Entidades.Materia;
@@ -9,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import Data.AlumnoData;
 import Data.CursadaData;
 import Data.MateriaData;
-
+import Data.MiConexion;
 
 /**
  *
@@ -73,9 +72,19 @@ public class Fri_Inscripciones extends javax.swing.JInternalFrame {
 
         btAnulaInsc.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btAnulaInsc.setText("Anular Inscripcion");
+        btAnulaInsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAnulaInscActionPerformed(evt);
+            }
+        });
 
         btSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btSalir.setText("Salir");
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
 
         cbxAlumno.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cbxAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -165,12 +174,12 @@ public class Fri_Inscripciones extends javax.swing.JInternalFrame {
                     .addComponent(cbxAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addComponent(lblSubtitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(noIinscriptas)
                     .addComponent(botonInscriptas))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btInscribe)
@@ -198,9 +207,54 @@ noIinscriptas.setSelected(false);
 
     private void btInscribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscribeActionPerformed
       Alumno al=(Alumno)cbxAlumno.getSelectedItem();
-      
+      int ta=jTablaMaterias.getSelectedRow();
+      Materia ma=new Materia();
+      Cursada ca=new Cursada();
+        
+       if(al!=null && ta!=-1){
+           
+            ma.setIdMateria((Integer)jTablaMaterias.getValueAt(ta,0));
+            ma.setNombre((String)jTablaMaterias.getValueAt(ta,1));
+            ma.setAnio((Integer)jTablaMaterias.getValueAt(ta,2));
+            ma.setActivo(true);
+            
+             ca.setAl(al);
+            ca.setMa(ma);
+            ca.setNota(0);
+            cuDa.guardarCursada(ca);
+                    // Alumno alu=alDa.buscarAlumno(al.getIdAlumno());
+        //for (Cursada c:cuDa.guardarCursada(ca)) {
+             //System.out.println(c.getNombre());         
+            //modelo.addRow(new Object[]{c.getIdMateria(),c.getNombre(),c.getAnio()});
+           // }
+       
+       }
     }//GEN-LAST:event_btInscribeActionPerformed
-public void llenarCombos(){
+
+    private void btAnulaInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnulaInscActionPerformed
+       Alumno al=(Alumno)cbxAlumno.getSelectedItem();
+      int ta=jTablaMaterias.getSelectedRow();
+      Materia ma=new Materia();
+      Cursada ca=new Cursada();
+        
+       if(al!=null && ta!=-1){
+           
+            ma.setIdMateria((Integer)jTablaMaterias.getValueAt(ta,0));
+            ca=cuDa.obtenerCursada(al.getIdAlumno(),ma.getIdMateria());
+            cuDa.borrarCursada(ca.getIdCursada());
+            }
+    }//GEN-LAST:event_btAnulaInscActionPerformed
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+       this.dispose(); 
+    }//GEN-LAST:event_btSalirActionPerformed
+ public void activarCampos(){
+     
+ }
+ public void DesactivarCampos(){
+ }
+    
+    public void llenarCombos(){
     for (Alumno al:alDa.listarAlumnos()) {
         cbxAlumno.addItem(al);
         

@@ -39,7 +39,7 @@ public class Universidad_Grupo10 {
         //---BORRAR CURSADA:
         //curs.borrarCursada(6);
         //---BUSCAR CURSADA:
-        System.out.println(curs.obtenerCursada(1, 2));
+        System.out.println(curs.obtenerCursada(2,3));
         System.out.println("-------------------------------------------------");
         //---GUARDAR MATERIA:
         //mat.guardarMateria(ma);

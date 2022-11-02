@@ -1,18 +1,41 @@
 package Vistas;
 
+import Entidades.Alumno;
+import Entidades.Cursada;
+import Entidades.Materia;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import Data.AlumnoData;
+import Data.CursadaData;
+import Data.MateriaData;
+import Data.MiConexion;
+
 /**
  *
  * @author Grupo 10
  */
 public class Fri_Notas extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form Jif_Materias
-     */
+   private MiConexion con = null;
+    private AlumnoData alDa;
+    private MateriaData maDa;
+    private CursadaData cuDa;
+    private DefaultTableModel modelo;
     public Fri_Notas() {
         initComponents();
+         this.con = new MiConexion("jdbc:mysql://localhost/tp_universidad", "root", "");
+        this.alDa = new AlumnoData (con);
+        this.maDa = new MateriaData (con);
+        this.cuDa = new CursadaData (con,alDa,maDa);
+        this.modelo=new DefaultTableModel();
+        llenarCombos();
+        armarCabecera();
+        pedirDatos(); 
+          
+        
+        
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,8 +49,6 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
         lbl_infoAlumno = new javax.swing.JLabel();
         lblSubtitulo = new javax.swing.JLabel();
         btGuarda = new javax.swing.JButton();
-        btCancelar = new javax.swing.JButton();
-        btSalir = new javax.swing.JButton();
         cbxAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablaNotas = new javax.swing.JTable();
@@ -42,16 +63,19 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
         lblSubtitulo.setText("Listado y Carga de Notas");
 
         btGuarda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btGuarda.setText("Guardar");
-
-        btCancelar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btCancelar.setText("Cancelar");
-
-        btSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btSalir.setText("Salir");
+        btGuarda.setText("actualizar nota");
+        btGuarda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGuardaActionPerformed(evt);
+            }
+        });
 
         cbxAlumno.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        cbxAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAlumnoActionPerformed(evt);
+            }
+        });
 
         jTablaNotas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTablaNotas.setModel(new javax.swing.table.DefaultTableModel(
@@ -78,20 +102,20 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btGuarda)
-                        .addGap(86, 86, 86)
-                        .addComponent(btCancelar)
-                        .addGap(94, 94, 94)
-                        .addComponent(btSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_infoAlumno)
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSubtitulo)
-                            .addComponent(cbxAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblSubtitulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 523, Short.MAX_VALUE))
+                            .addComponent(cbxAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 339, Short.MAX_VALUE)
+                        .addComponent(btGuarda)
+                        .addGap(368, 368, 368)))
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,28 +125,113 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_infoAlumno)
-                    .addComponent(cbxAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblSubtitulo)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btGuarda)
-                    .addComponent(btCancelar)
-                    .addComponent(btSalir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addComponent(btGuarda)
                 .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbxAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAlumnoActionPerformed
+        llenarTablas();
+        //pedirDatos(); 
+        //String nota=JOptionPane.showInputDialog("ingrese la nota");
+
+    }//GEN-LAST:event_cbxAlumnoActionPerformed
+
+    private void btGuardaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardaActionPerformed
+       pedirDatos();
+        int ta=jTablaNotas.getSelectedRow();
+      Alumno al=(Alumno)cbxAlumno.getSelectedItem();
+        System.out.println(al);
+        //Materia ma=new Materia();
+        //cuDa.inscripcionMateria(al);    
+        if(al!=null){
+           
+            // Alumno alu=alDa.buscarAlumno(al.getIdAlumno());
+        for (Materia c:cuDa.inscripcionMateria(al)) {
+            if(jTablaNotas.getValueAt(ta,1).equals(c.getNombre())){
+             Cursada cu=cuDa.obtenerCursada(al.getIdAlumno(),c.getIdMateria());
+             //System.out.println(c.getNombre()); 
+            // System.out.println(jTablaNotas.getValueAt(ta, 2));
+             double nro= Double.parseDouble((String) jTablaNotas.getValueAt(ta, 2));
+            
+             //modelo.addRow(new Object[]{cu.getIdCursada(),c.getNombre(),nro});
+            
+           // System.out.println(al.getIdAlumno()+ c.getIdMateria() + nro);
+            cuDa.actualizarNota(al.getIdAlumno(),c.getIdMateria(),nro);}
+            
+            }
+       
+        }
+        
+           
+
+
+    }//GEN-LAST:event_btGuardaActionPerformed
+    public void llenarCombos(){
+    for (Alumno al:alDa.listarAlumnos()) {
+       cbxAlumno.addItem(al);
+        
+    }}
+    
+    public void armarCabecera(){
+ArrayList<Object>col=new ArrayList();
+col.add("Id");
+col.add("Materia");
+col.add("Nota");
+    for (Object colu : col) {
+        modelo.addColumn(colu);
+        
+    }
+    jTablaNotas.setModel(modelo);
+
+}
+        public void llenarTablas(){
+       borrarFilas();
+    Alumno al=(Alumno)cbxAlumno.getSelectedItem();
+        //System.out.println(al);
+        //Materia ma=new Materia();
+        //cuDa.inscripcionMateria(al);    
+        if(al!=null){
+            // Alumno alu=alDa.buscarAlumno(al.getIdAlumno());
+        for (Materia c:cuDa.inscripcionMateria(al)) {
+             Cursada cu=cuDa.obtenerCursada(al.getIdAlumno(),c.getIdMateria());
+             System.out.println(c.getNombre());         
+            modelo.addRow(new Object[]{cu.getIdCursada(),c.getNombre(),cu.getNota()});
+            }
+          
+        }}
+         public void pedirDatos(){
+                
+             System.out.println(jTablaNotas.getSelectedRow());
+           
+       if(jTablaNotas.getSelectedRow()!=-1){
+           String nota=JOptionPane.showInputDialog("ingrese la nota");
+           jTablaNotas.setValueAt(nota,jTablaNotas.getSelectedRow(), 2);
+            System.out.println("  "+ jTablaNotas.getSelectedRow());
+           
+       }
+            
+           
+         }
+        
+          public void borrarFilas(){
+    
+        int a=modelo.getRowCount()-1;//cuenta las filas pero el indice es uno menos
+        for (int i = a; i >=0; i--) {
+            modelo.removeRow(i);
+        }}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCancelar;
     private javax.swing.JButton btGuarda;
-    private javax.swing.JButton btSalir;
-    private javax.swing.JComboBox<String> cbxAlumno;
+    private javax.swing.JComboBox<Alumno> cbxAlumno;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablaNotas;
     private javax.swing.JLabel lblSubtitulo;
