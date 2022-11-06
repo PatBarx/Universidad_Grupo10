@@ -9,6 +9,7 @@ import Data.MateriaData;
 import Data.MiConexion;
 import Entidades.Materia;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,10 +63,25 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
         lbl_anio.setText("Año:");
 
         txt_idMateria.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_idMateria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idMateriaFocusLost(evt);
+            }
+        });
 
         txtNombreMateria.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtNombreMateria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreMateriaFocusLost(evt);
+            }
+        });
 
         txtAnio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtAnio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAnioFocusLost(evt);
+            }
+        });
 
         btBuscar.setText("buscar");
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -240,6 +256,30 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
         chkEstado.setSelected(false);
 
     }//GEN-LAST:event_btLimpiaActionPerformed
+
+    private void txt_idMateriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idMateriaFocusLost
+            String val= "[0-9]*";//exp regular
+        if(!txt_idMateria.getText().matches(val) || txt_idMateria.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Ingrese un NUMERO\n-No deje el campo vacío-");
+            txt_idMateria.requestFocus();
+        }
+    }//GEN-LAST:event_txt_idMateriaFocusLost
+
+    private void txtAnioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioFocusLost
+                String val= "[0-9]*";//exp regular
+        if(!txtAnio.getText().matches(val) || txtAnio.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Ingrese un NUMERO\n-No deje el campo vacío-");
+            txtAnio.requestFocus();
+        }
+    }//GEN-LAST:event_txtAnioFocusLost
+
+    private void txtNombreMateriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreMateriaFocusLost
+           if(txtNombreMateria.getText().length()== 0){
+          JOptionPane.showMessageDialog(this,"debe llenar el campo");
+       txtNombreMateria.requestFocus();
+        
+        }
+    }//GEN-LAST:event_txtNombreMateriaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

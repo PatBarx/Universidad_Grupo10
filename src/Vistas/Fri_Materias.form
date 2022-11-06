@@ -151,6 +151,9 @@
           <Font name="Dialog" size="18" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_idMateriaFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombreMateria">
       <Properties>
@@ -158,6 +161,9 @@
           <Font name="Dialog" size="18" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNombreMateriaFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAnio">
       <Properties>
@@ -165,6 +171,9 @@
           <Font name="Dialog" size="18" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtAnioFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btBuscar">
       <Properties>

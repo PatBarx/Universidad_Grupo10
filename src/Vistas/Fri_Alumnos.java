@@ -8,6 +8,7 @@ import java.time.Month;
 import java.util.Calendar;
 import Data.AlumnoData;
 import Data.MateriaData;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -66,10 +67,25 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
         lblNombre.setText("Nombre:");
 
         txt_idAlumno.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_idAlumno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idAlumnoFocusLost(evt);
+            }
+        });
 
         txtApellido.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidoFocusLost(evt);
+            }
+        });
 
         txtNombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
 
         btBuscar.setText("BUSCAR");
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +133,12 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
         lbl_FechNac.setText("Fecha de Nac:");
 
         lblDni.setText("dni");
+
+        txtDni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDniFocusLost(evt);
+            }
+        });
 
         txtFechadenacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +324,37 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
     private void txtFechadenacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechadenacimientoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechadenacimientoActionPerformed
+
+    private void txt_idAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idAlumnoFocusLost
+      String val= "[0-9]*";//exp regular
+        if(!txt_idAlumno.getText().matches(val) || txt_idAlumno.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Ingrese un NUMERO\n-No deje el campo vacío-");
+            txt_idAlumno.requestFocus();
+        }
+    }//GEN-LAST:event_txt_idAlumnoFocusLost
+
+    private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
+           if(txtApellido.getText().length()== 0){
+          JOptionPane.showMessageDialog(this,"debe llenar el campo");
+       txtApellido.requestFocus();
+        
+        }
+    }//GEN-LAST:event_txtApellidoFocusLost
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+             if(txtNombre.getText().length()== 0){
+          JOptionPane.showMessageDialog(this,"debe llenar el campo");
+       txtNombre.requestFocus();
+        
+        }
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDniFocusLost
+                    String val= "[0-9]*";//exp regularesif(
+       if(!txtDni.getText().matches(val)){
+       JOptionPane.showMessageDialog(this,"no ingreso un numero");
+       txtDni.requestFocus();}
+    }//GEN-LAST:event_txtDniFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
