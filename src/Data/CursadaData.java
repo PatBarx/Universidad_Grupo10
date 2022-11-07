@@ -156,7 +156,7 @@ public class CursadaData {
 
     public ArrayList<Alumno> inscripcionAlumno(Materia ma) {    //SELECT * Alumnos
         ArrayList<Alumno> alumnos = new ArrayList();
-        String sql = " SELECT alumno.nombre ,alumno.apellido FROM materia,cursada,alumno WHERE "
+        String sql = " SELECT alumno.idAlumno,alumno.nombre ,alumno.apellido FROM materia,cursada,alumno WHERE "
                 + "materia.idMateria=cursada.idMateria and alumno.idAlumno=cursada.idAlumno and materia.idMateria=? ";
         try {
             PreparedStatement pst = con.prepareStatement(sql);
@@ -167,6 +167,7 @@ public class CursadaData {
             while (rs.next()) {
                 al = new Alumno();
                 //mate.setIdMateria(rs.getInt("idMateria"));
+                al.setIdAlumno(rs.getInt("idAlumno"));
                 al.setNombre(rs.getString("nombre"));
                 al.setApellido(rs.getString("apellido"));
                 //mate.setActivo(rs.getBoolean("activo"));

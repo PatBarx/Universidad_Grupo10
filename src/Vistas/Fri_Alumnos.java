@@ -8,6 +8,7 @@ import java.time.Month;
 import java.util.Calendar;
 import Data.AlumnoData;
 import Data.MateriaData;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 
@@ -48,11 +49,9 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
         btBorra = new javax.swing.JButton();
         btActualiza = new javax.swing.JButton();
         btLimpia = new javax.swing.JButton();
-        lbl_FechNac = new javax.swing.JLabel();
         lblDni = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
         fecnac = new com.toedter.calendar.JDateChooser();
-        txtFechadenacimiento = new javax.swing.JTextField();
 
         lblTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblTitulo.setText("ALUMNO");
@@ -129,20 +128,11 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        lbl_FechNac.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lbl_FechNac.setText("Fecha de Nac:");
-
         lblDni.setText("dni");
 
         txtDni.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtDniFocusLost(evt);
-            }
-        });
-
-        txtFechadenacimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechadenacimientoActionPerformed(evt);
             }
         });
 
@@ -153,18 +143,6 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_FechNac)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(209, 209, 209)
-                                .addComponent(lblTitulo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(chkEstado)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -186,16 +164,24 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
                                     .addComponent(lbl_idAlumno))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_idAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fecnac, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFechadenacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_idAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btBuscar)
-                        .addGap(22, 22, 22))))
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(lblTitulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(chkEstado)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,11 +207,7 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(fecnac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_FechNac)
-                    .addComponent(txtFechadenacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDni))
@@ -249,20 +231,21 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
        Alumno al=new Alumno();
        String nombre= txtNombre.getText();
        String apellido= txtApellido.getText();
-       int anio=fecnac.getCalendar().get(Calendar.YEAR);
-       int mes=fecnac.getCalendar().get(Calendar.MONTH)+1;
-       int dia=fecnac.getCalendar().get(Calendar.DAY_OF_MONTH);
+//       int anio=fecnac.getCalendar().get(Calendar.YEAR);
+//       int mes=fecnac.getCalendar().get(Calendar.MONTH)+1;
+//       int dia=fecnac.getCalendar().get(Calendar.DAY_OF_MONTH);
        //String fecNac=""+anio+"-"+mes+"-"+dia;
-       
+       java.util.Date sfecha =fecnac.getDate();
+       LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        int dni=Integer.parseInt(txtDni.getText());
        boolean estado=chkEstado.isSelected();
        al.setNombre(nombre);
        al.setApellido(apellido);
-       al.setFechaNac(LocalDate.of(anio,mes,dia));
+       al.setFechaNac(fechaNac);
        al.setDni(dni);
        al.setActivo(estado);
        alDa.guardarAlumno(al);
-      
+       txt_idAlumno.setText(al.getIdAlumno()+"");
     }//GEN-LAST:event_btGuardaActionPerformed
 
     private void btBorraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBorraActionPerformed
@@ -289,7 +272,7 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
        al.setIdAlumno(idAl);
       
        alDa.actualizarAlumno(al);
-      
+   
     }//GEN-LAST:event_btActualizaActionPerformed
 
     private void btLimpiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiaActionPerformed
@@ -299,8 +282,8 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
             txtDni.setText("");
             chkEstado.setSelected(false);
              txt_idAlumno.setText("");     
-            txtFechadenacimiento.setText("");
            
+           fecnac.setDate(null);
     }//GEN-LAST:event_btLimpiaActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
@@ -312,18 +295,17 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
            String dni=String.valueOf(al.getDni());
             txtDni.setText(dni);
             chkEstado.setSelected(al.isActivo());
-             int anio=al.getFechaNac().getYear();
-             int mes=al.getFechaNac().getMonthValue();
-       int dia=al.getFechaNac().getDayOfMonth();
-       String fecNac=""+anio+"-"+mes+"-"+dia;
+//             int anio=al.getFechaNac().getYear();
+//             int mes=al.getFechaNac().getMonthValue();
+//       int dia=al.getFechaNac().getDayOfMonth();
+//       String fecNac=""+anio+"-"+mes+"-"+dia;
             
-            txtFechadenacimiento.setText(fecNac);
+           
+            LocalDate lc = al.getFechaNac();
+            java.util.Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            fecnac.setDate(date);
            
     }//GEN-LAST:event_btBuscarActionPerformed
-
-    private void txtFechadenacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechadenacimientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechadenacimientoActionPerformed
 
     private void txt_idAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idAlumnoFocusLost
       String val= "[0-9]*";//exp regular
@@ -370,11 +352,9 @@ public class Fri_Alumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblDni;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lbl_FechNac;
     private javax.swing.JLabel lbl_idAlumno;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDni;
-    private javax.swing.JTextField txtFechadenacimiento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txt_idAlumno;
     // End of variables declaration//GEN-END:variables
