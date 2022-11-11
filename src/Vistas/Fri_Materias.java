@@ -24,6 +24,9 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
         initComponents();
         this.con = new MiConexion("jdbc:mysql://localhost/tp_universidad", "root", "");
         this.matDa = new MateriaData (con);
+         btGuarda.setEnabled(false);
+          btBorra.setEnabled(false);
+        btActualiza.setEnabled(false);
     }
 
     /**
@@ -49,6 +52,8 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
         btBorra = new javax.swing.JButton();
         btActualiza = new javax.swing.JButton();
         btLimpia = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btCerrar = new javax.swing.JButton();
 
         lblTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblTitulo.setText("MATERIA");
@@ -125,6 +130,20 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("nuevo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btCerrar.setText("salir");
+        btCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,22 +171,28 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
                                 .addComponent(btActualiza)
                                 .addGap(26, 26, 26)
                                 .addComponent(btLimpia))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblNombreMateria)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_idMateria)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(txt_idMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lbl_anio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(57, 57, 57)
-                                .addComponent(btBuscar)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(365, 365, 365)
+                                    .addComponent(btCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(lblNombreMateria)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lbl_idMateria)
+                                            .addGap(30, 30, 30)
+                                            .addComponent(txt_idMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(lbl_anio)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(52, 52, 52)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btBuscar)
+                                        .addComponent(jButton1)))))))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -184,15 +209,26 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombreMateria))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_anio))
-                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_anio)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
                 .addComponent(chkEstado)
-                .addGap(32, 32, 32)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btGuarda)
                     .addComponent(btBorra)
@@ -205,7 +241,8 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btGuardaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardaActionPerformed
-       Materia m=new Materia();
+       if(txtNombreMateria.getText().length()!=0 && txtAnio.getText().length() != 0 ){
+        Materia m=new Materia();
        String nombre= txtNombreMateria.getText();
        int anio=Integer.parseInt(txtAnio.getText());
        boolean estado=chkEstado.isSelected();
@@ -213,6 +250,12 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
        m.setAnio(anio);
        m.setActivo(estado);
        matDa.guardarMateria(m);
+       btGuarda.setEnabled(false);
+       }else{
+       
+       JOptionPane.showMessageDialog(this,"faltan campos para rellenar");
+       
+       }
       
        
     }//GEN-LAST:event_btGuardaActionPerformed
@@ -222,6 +265,8 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
        int idMat= Integer.parseInt(txt_idMateria.getText());
         matDa.borrarMateria(idMat);
         //matDa.borrarMateria(Integer.parseInt(txtAnio.getText()));
+        btBorra.setEnabled(false);
+        btActualiza.setEnabled(false);
     }//GEN-LAST:event_btBorraActionPerformed
 
     private void btActualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizaActionPerformed
@@ -237,31 +282,42 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
       
        
         matDa.actualizarMateria(ma);
+        btBorra.setEnabled(false);
+        btActualiza.setEnabled(false);
     }//GEN-LAST:event_btActualizaActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-     
+           
+              String val= "[0-9]*";//exp regular
+        if(txt_idMateria.getText().matches(val)&& txt_idMateria.getText().length() != 0){
         int idMat= Integer.parseInt(txt_idMateria.getText());
            Materia mat=matDa.buscarMateria(idMat);
             txtNombreMateria.setText(mat.getNombre());
             String anio=String.valueOf(mat.getAnio());
             txtAnio.setText(anio);
             chkEstado.setSelected(mat.isActivo());
+         btBorra.setEnabled(true);
+            btActualiza.setEnabled(true); 
+        }else{
+         JOptionPane.showMessageDialog(this,"Ingrese un NUMERO para buscar materias");
+        }
             
            
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btLimpiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiaActionPerformed
         txt_idMateria.setText("");txtNombreMateria.setText("");txtAnio.setText("");
-        chkEstado.setSelected(false);
-
+          chkEstado.setSelected(false);
+          btGuarda.setEnabled(false);
+          btBorra.setEnabled(false);
+          btActualiza.setEnabled(false);
     }//GEN-LAST:event_btLimpiaActionPerformed
 
     private void txt_idMateriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idMateriaFocusLost
             String val= "[0-9]*";//exp regular
         if(!txt_idMateria.getText().matches(val) || txt_idMateria.getText().length() == 0){
             JOptionPane.showMessageDialog(this,"Ingrese un NUMERO\n-No deje el campo vacío-");
-            txt_idMateria.requestFocus();
+//            txt_idMateria.requestFocus();
         }
     }//GEN-LAST:event_txt_idMateriaFocusLost
 
@@ -269,26 +325,36 @@ public class Fri_Materias extends javax.swing.JInternalFrame {
                 String val= "[0-9]*";//exp regular
         if(!txtAnio.getText().matches(val) || txtAnio.getText().length() == 0){
             JOptionPane.showMessageDialog(this,"Ingrese un NUMERO\n-No deje el campo vacío-");
-            txtAnio.requestFocus();
+//            txtAnio.requestFocus();
         }
     }//GEN-LAST:event_txtAnioFocusLost
 
     private void txtNombreMateriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreMateriaFocusLost
            if(txtNombreMateria.getText().length()== 0){
           JOptionPane.showMessageDialog(this,"debe llenar el campo");
-       txtNombreMateria.requestFocus();
+//       txtNombreMateria.requestFocus();
         
         }
     }//GEN-LAST:event_txtNombreMateriaFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ btGuarda.setEnabled(true);        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarActionPerformed
+dispose();     
+    }//GEN-LAST:event_btCerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btActualiza;
     private javax.swing.JButton btBorra;
     private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btCerrar;
     private javax.swing.JButton btGuarda;
     private javax.swing.JButton btLimpia;
     private javax.swing.JCheckBox chkEstado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblNombreMateria;
     private javax.swing.JLabel lblTitulo;

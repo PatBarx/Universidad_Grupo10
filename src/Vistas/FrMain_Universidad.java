@@ -72,6 +72,11 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 17)); // NOI18N
 
         jMenuSalir.setText("SALIR");
+        jMenuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSalirActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuSalir);
 
         jMenuBar1.add(jMenu1);
@@ -211,6 +216,10 @@ public class FrMain_Universidad extends javax.swing.JFrame {
         list.setVisible(true);
         escritorio1.moveToFront(list); 
     }//GEN-LAST:event_jMenuListaAlumActionPerformed
+
+    private void jMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalirActionPerformed
+       dispose();
+    }//GEN-LAST:event_jMenuSalirActionPerformed
 
     /**
      * @param args the command line arguments

@@ -30,6 +30,8 @@ public class Fri_Inscripciones extends javax.swing.JInternalFrame {
         this.modelo=new DefaultTableModel();
         llenarCombos();
         armarCabecera();
+         btAnulaInsc.setEnabled(false);
+         btInscribe.setEnabled(false);
     }
 
     /**
@@ -198,10 +200,14 @@ public class Fri_Inscripciones extends javax.swing.JInternalFrame {
     private void botonInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscriptasActionPerformed
 noIinscriptas.setSelected(false);
         llenarTablas();
+        btAnulaInsc.setEnabled(true);
+         btInscribe.setEnabled(false);
     }//GEN-LAST:event_botonInscriptasActionPerformed
 
     private void noIinscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noIinscriptasActionPerformed
  botonInscriptas.setSelected(false);
+        btAnulaInsc.setEnabled(false);
+         btInscribe.setEnabled(true);
         llenarTablas1();       // TODO add your handling code here:
     }//GEN-LAST:event_noIinscriptasActionPerformed
 

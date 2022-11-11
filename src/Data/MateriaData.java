@@ -52,7 +52,8 @@ public class MateriaData {
 
     public Materia buscarMateria(int id) {   //SELECT 1 ALUMNO
         //SELECT 1 ALUMNO
-        Materia mate = null;;
+        Materia mate = null;
+        
         String sql = "SELECT * FROM materia WHERE idMateria=?";
         PreparedStatement ps;
         try {

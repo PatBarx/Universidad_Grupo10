@@ -52,6 +52,7 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
         cbxAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablaNotas = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         lblTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         lblTitulo.setText("Actualizacion de Notas");
@@ -91,6 +92,14 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTablaNotas);
 
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton1.setText("salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,6 +125,10 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
                         .addComponent(btGuarda)
                         .addGap(368, 368, 368)))
                 .addGap(64, 64, 64))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +143,9 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
                 .addComponent(lblSubtitulo)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(btGuarda)
                 .addGap(19, 19, 19))
         );
@@ -175,6 +190,10 @@ public class Fri_Notas extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_btGuardaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void llenarCombos(){
     for (Alumno al:alDa.listarAlumnos()) {
        cbxAlumno.addItem(al);
@@ -232,6 +251,7 @@ col.add("Nota");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btGuarda;
     private javax.swing.JComboBox<Alumno> cbxAlumno;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablaNotas;
     private javax.swing.JLabel lblSubtitulo;
